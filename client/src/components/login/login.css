@@ -1,0 +1,54 @@
+
+span{
+    grid-area: logo;
+    align-self: center;
+}
+form{
+    grid-area: form;
+    align-self: center;
+}
+.description{
+    font-size: 25px;
+    width: 100% !important;
+    grid-area: descript;
+    text-align: center;
+}
+.input-login{
+    height: 50px !important;
+    font-size: 25px!important;
+    text-align: center;
+    border: 0;
+    width: 100%;
+    box-shadow: none;
+    border-bottom: 2px solid #4D91C6;
+    border-radius: 0px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.input-login:focus{
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+.control{
+    text-align: center !important;
+}
+.button.is-success, .button.is-success:hover{
+    outline: transparent;
+    margin-top: 50px;
+    width: 100%;
+    font-size: 1.2em !important;
+    height: 50px;
+    font-size: 20px;
+    background-color: #3991cb;
+}
+
+.form-login {
+    height: 100vh;
+    display: grid !important;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows:  35vh 15vh 50vh;
+    grid-template-areas: 
+    ". logo ."
+    ". descript ."
+    ". form .";
+}

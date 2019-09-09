@@ -1,0 +1,12 @@
+.App-intro {
+  font-size: large;
+}
+
+.nav-top{
+  display: grid;
+}
+@media only screen and (max-width: 575px){
+  .Main{
+    display: none;
+  }
+}

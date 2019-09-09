@@ -1,0 +1,18 @@
+div h3{
+    font-size: 2.5em;
+
+}
+
+div p{
+    font-size: 1.2em;
+}
+
+.welcome-info{
+    margin-top: 5%;
+    padding: 20px;
+}
+.info{
+    padding-left: 10%;
+    padding-right: 10%;
+    line-height: 40px;
+}

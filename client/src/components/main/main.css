@@ -1,0 +1,48 @@
+
+.Main {
+	background-color: #c7d3db;
+	height: 100vh;
+	overflow-y: scroll;
+}
+
+.sidebar-div{
+	grid-area: sidebar;
+	background-color: #3f4352;
+    color: white;
+}
+
+.main-div{
+	grid-area: main;
+	overflow-y: scroll;
+}
+
+
+.header-div{
+    
+    /* position: fixed; */
+    grid-area: header;
+    
+}
+
+.App {
+	text-align: center;
+	height: 100vh;
+	background-color: #f9f9f9;
+	display: grid !important;
+	grid-template-columns: 1.2fr 2.8fr 2fr;
+	grid-template-rows: 10vh 90vh ;
+	grid-template-areas: 
+	"header header header"
+	"sidebar main main";
+}
+
+@media only screen and (max-width: 700px) {
+	.App {
+		grid-template-columns: 2fr;
+		grid-template-rows: 20vh 30vh 50vh;
+		grid-template-areas: 
+		"header"
+		"sidebar"
+		"main";
+	}
+}

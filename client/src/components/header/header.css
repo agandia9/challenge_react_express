@@ -1,0 +1,7 @@
+.header-fixed {
+        width: 100%;
+    /* position: fixed; */
+    background-color: blue;
+    height: 100%;
+    top: 0;
+}
