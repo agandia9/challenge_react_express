@@ -2,7 +2,6 @@ const jsonwebtoken = require('jsonwebtoken')
 
 verifyPermission = (req, res, next) => {
     let users = req.users
-    console.log(req.users)
     if(users.permissions === 'ADMIN_PERMISSION') {
         next();
     } else {
@@ -28,9 +27,9 @@ verifyToken = (req, res, next) => {
                 }
             })
         }
-        console.log(decoded)
+
         req.users = decoded.users;
-        console.log(req.user)
+
         next();
     })
 }

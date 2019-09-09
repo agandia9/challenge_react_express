@@ -10,6 +10,14 @@ const storage = {
 
     removeToken(){
         return sessionStorage.removeItem('token')
+    },
+
+    setUser(value) {
+        return sessionStorage.setItem('user', JSON.stringify(value))
+    },
+
+    getUser() {
+        return JSON.parse(sessionStorage.getItem('user'))
     }
 }
 

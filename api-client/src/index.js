@@ -9,7 +9,6 @@ const api = {
     },
 
     _call(method,path,body,token){
-
         const options = {
             method,
             url: `${this._baseUrl()}/${path}`,
@@ -18,28 +17,28 @@ const api = {
 
         if(body) options.body = body
 
-        if(token) options.headers = { authorization: `Bearer ${token}` }
+        if(token) options.headers = { token: `${token}` }
 
         return rp(options)
     },
 
-    login: function login(email, password) {
+    login(email, password) {
         return this._call('post', 'login', { email: email, password: password });
     },
-    listUsers: function listUsers() {
-        return this._call('get', 'list');
+    listUsers(token) {
+        return this._call('get', 'list', undefined, token);
     },
-    getUser: function getUser(id) {
-        return this._call('get', 'user/' + id);
+    getUser(id, token) {
+        return this._call('get', 'user/' + id, undefined, token);
     },
-    createUsers: function createUsers(name, surname, password, email, permissions) {
-        return this._call('post', 'create', { name, surname, password, email, permissions });
+    createUsers(name, surname, password, email, permissions, token) {
+        return this._call('post', 'create', { name, surname, password, email, permissions }, token);
     },
-    updateUsers: function updateUsers(id, name, surname, password, email, permissions) {
-        return this._call('put', 'update/' + id, { name, surname, password, email, permissions });
+    updateUsers(id, name, surname, password, email, permissions, token) {
+        return this._call('put', 'update/' + id, { name, surname, password, email, permissions }, token);
     },
-    deleteUsers: function deleteUsers(id) {
-        return this._call('delete', 'delete/' + id);
+    deleteUsers(id, token) {
+        return this._call('delete', 'delete/' + id, undefined, token);
     }
 
     

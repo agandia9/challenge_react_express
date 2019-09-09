@@ -23,8 +23,9 @@ export class Login extends Component {
         const {email, password} = this.state
         return service.login(email, password)
             .then(res=>{
-                console.log(res)
+                
                 if(res.ok){
+                    this.props._handlerUserInfo(res.users)
                     this.props._handleIsLogged(res.token)
                     // swal({
                     //     title: 'Logged',

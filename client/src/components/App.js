@@ -9,22 +9,26 @@ import {Login} from './login/login'
 class App extends Component {
   state = {isLogged: false, userInfo:{}}
 
-  componentDidMount (){
-    console.log(this.state, storage.getToken()) 
+  componentDidMount = ()=>{
+    console.log(storage.getUser())
+    !Object.keys(this.state.userInfo).length ? this.setState({userInfo:storage.getUser()}, () => {
+      // console.log(this.state)
+    }) : undefined
+    
     return storage.getToken() ? this.setState({isLogged:true}) : undefined
-     
   }
 
   _handleIsLogged =(token)=>{
+    
     storage.setToken(token)
     this.setState({isLogged:true})
-    console.log(this.state.isLogged)
   }
 
   _handlerUserInfo = (userInfo) => {
     this.setState({
       userInfo
     })
+    storage.setUser(userInfo)
   }
   _handleLogout = ()=>{
     this.setState({
@@ -40,7 +44,7 @@ class App extends Component {
       _handleLogout={this._handleLogout}
       userInfo={this.state.userInfo}
       />
-    : <Login _handleIsLogged={this._handleIsLogged}/>
+    : <Login _handleIsLogged={this._handleIsLogged} _handlerUserInfo={this._handlerUserInfo}/>
   
 
   return(

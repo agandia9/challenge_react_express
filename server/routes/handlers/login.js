@@ -20,11 +20,9 @@ module.exports = (req, res) => {
                     }
                 });
             }
-            console.log(process.env.EXPIRED_TOKEN)
             let token = jwt.sign({
                 users
             }, process.env.SEED, { expiresIn: process.env.EXPIRED_TOKEN })
-            console.log(process.env.SEED)
             res.status(200).json({
                 ok: true,
                 users,

@@ -1,33 +1,18 @@
 import React,{ Component } from 'react';
-import api from '../../services/api'
-import storage from '../../services/storage'
 import { Route } from 'react-router-dom'
 import { Sidebar } from '../sidebar/sidebar'
-import { Welcome } from '../welcome/welcome'
+import { InfoUser } from '../infoUser/infoUser'
 import { Header } from '../header/header'
 import './main.css';
 
 export class Main extends Component {
  
-  state = { newInfoUser: {}, isAdmin: false }
+  state = { userInfo: {}, isAdmin: false }
 
   componentDidMount(){
-    api.listUsers(storage.getToken()).then(res => {
-      let {isAdmin} = res.data
-      this.setState({
-        isAdmin
-      })
-      this.props._handlerUserInfo(res.data)})
-      .catch(err => {
-        this.props._handleLogout()
-      })
+    this.setState({userInfo: this.props.userInfo, isAdmin: this.props.userInfo.permissions !== 'ADMIN_PERMISSION' ? true : false})
   }
 
-  _passToNav = (newInfoUser)=>{
-    this.setState({
-      newInfoUser
-    })
-  }
 
   render() {
     return (
@@ -36,20 +21,21 @@ export class Main extends Component {
              <Header 
               
               _handleLogout={this.props._handleLogout} 
-              userInfo={this.props.userInfo}
+              userInfo={this.state.userInfo}
               isAdmin={this.state.isAdmin}
             />
             </div>
             <div className="sidebar-div">
                 <Sidebar 
-                  userInfo={this.props.userInfo} 
+                  userInfo={this.state.userInfo} 
                   newInfoUser={this.state.newInfoUser}
                 />
             </div> 
             <div className="main-div">
-								<Route 
+                <Route 
+                  
                   exact path={'/'}
-                  component={Welcome}
+                  component={ () => <InfoUser userInfo={this.state.userInfo} />}
 								/>
 								{/* <Route 
                   exact path={'/subject/:nsubject'}
@@ -65,15 +51,26 @@ export class Main extends Component {
                     _handleLogout={this.props._handleLogout} 
                     
                   />}
-                />
+                />*/}
                 {
                   this.state.isAdmin ? 
-                    <Route
-                    path={'/admin'}
-                    component={Admin}
-                  />
+                    <div>
+                      <Route
+                      path={'/create'}
+                      component={InfoUser}
+                      />
+                      <Route
+                        path={'/update'}
+                        component={InfoUser}
+                      />
+                      <Route
+                        path={'/list'}
+                        component={InfoUser}
+                      />
+                  </div>
+                  
                   : undefined
-                } */}
+                } 
             </div>
         </div>
 				

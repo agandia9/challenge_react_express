@@ -6,9 +6,9 @@ export class Sidebar extends Component {
   render() {
     return (
       <div className="sidenav-main">
-        <p>jajaja</p>
-        <p>jejeje</p>
-        <p>jujuj</p>
+        <p>Crear usuario</p>
+        <p>Actualizar usuario</p>
+        <p>Lista de usuarios</p>
             {/* <SideNav trigger={<Button />} options={{closeOnClick: true}}>
             <SideNavItem userView user={{
             background: 'https://placeimg.com/640/480/tech',

@@ -10,7 +10,6 @@ const mongo = {
 }
 
 with(mongo) {
-    console.log(`mongodb://${host}:${port}/${database}`)
     mongoose.connect(`mongodb://${host}:${port}/${database}`, { useNewUrlParser: true })
     .then(() => {
         const app = express();
