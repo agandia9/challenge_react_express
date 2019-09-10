@@ -11,8 +11,15 @@ div p{
     margin-top: 5%;
     padding: 20px;
 }
-.info{
+.info-user-main{
     padding-left: 10%;
     padding-right: 10%;
     line-height: 40px;
+    
+}
+
+.info-user-main span {
+    height: 50px;
+    display: flex;
+    justify-content: center;
 }

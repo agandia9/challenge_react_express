@@ -8,10 +8,10 @@ form{
     align-self: center;
 }
 .description{
-    font-size: 25px;
     width: 100% !important;
     grid-area: descript;
     text-align: center;
+    line-height: 100px;
 }
 .input-login{
     height: 50px !important;

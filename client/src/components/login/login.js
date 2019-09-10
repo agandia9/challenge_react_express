@@ -34,20 +34,18 @@ export class Login extends Component {
                 }else{
                 }
             }).catch(err => {
-                console.log(err)
-                
                     swal.fire({
                         type: 'error',
                         title: 'Oops...',
-                        text: err.error.message,}
-                      )
+                        text: err.error.message
+                    })
                 
             })
     }
     render(){
         return(
             <div className="form-login">
-                <p className="description">Bienvenido/a!</p>
+                <h1 className="description">Bienvenido/a!</h1>
                 <form onSubmit={this._handleLogin}>
                     <div className="field">
                             <input 

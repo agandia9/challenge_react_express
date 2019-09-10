@@ -23,7 +23,7 @@ export class EditUsers extends Component {
 
     handleChange = (e) =>{
         this.setState({ userToModify: e.target.value, createUser: false}, ()=> {
-            console.log(this.state)
+            // console.log(this.state)
         })
         
     }
@@ -31,17 +31,16 @@ export class EditUsers extends Component {
         let userToModify = {...this.state.userToModify}
         userToModify[`${e.target.name}`] = e.target.value;
         
-        console.log(userToModify)
+        
         this.setState({userToModify}, () => {
-            console.log(this.state)
+            // console.log(this.state)
         })
     }
     handleAction = () => {
-        console.log(this.state.userToModify)
         this.state.createUser ?
         service.createUsers(this.state.userToModify.name, this.state.userToModify.surname, this.state.userToModify.password, this.state.userToModify.email, this.state.userToModify.permissions, storage.getToken()).then(res => {
             service.listUsers(storage.getToken()).then(res => {
-                console.log(res)
+                
                 this.setState({userList: res.users}, () => {
                     swal.fire(
                         'Usuario creado correctamente',
@@ -54,7 +53,6 @@ export class EditUsers extends Component {
         :
         service.updateUsers(this.state.userToModify._id, this.state.userToModify.name, this.state.userToModify.surname, this.state.userToModify.password, this.state.userToModify.email, this.state.userToModify.permissions, storage.getToken()).then(res => {
             service.listUsers(storage.getToken()).then(res => {
-                console.log(res)
                 this.setState({userList: res.users}, () => swal.fire(
                     'Usuario editado correctamente',
                     '',
@@ -68,11 +66,8 @@ export class EditUsers extends Component {
         let userToModify = {
             name:"", surname:"", password:"", email:"", permissions:""
         }
-        
-        
-        console.log(userToModify)
         this.setState({userToModify, createUser: true}, () => {
-            console.log(this.state)
+            // console.log(this.state)
         })
     }
     render(){
@@ -94,7 +89,7 @@ export class EditUsers extends Component {
                                 }}
                                 >  
                                     <MenuItem value={{}}>
-                                        <em>None</em>
+                                        <em>Sin selección</em>
                                     </MenuItem>
                                     {
                                         this.state.userList.map(user =>{
@@ -116,7 +111,7 @@ export class EditUsers extends Component {
                         } </p> </span>
                         <div className="edit-users-form">
                             <label>
-                                    Name:
+                                    Nombre:
                                 <Input type="text" value={this.state.userToModify.name} name="name" onChange={this.handleChangeInput} />
                             </label>
                             <label>
@@ -124,11 +119,11 @@ export class EditUsers extends Component {
                                 <Input type="email" value={this.state.userToModify.email} name="email" onChange={this.handleChangeInput} />
                             </label>
                             <label>
-                                    surname:
+                                    Apellido:
                                 <Input type="text" value={this.state.userToModify.surname} name="surname" onChange={this.handleChangeInput} />
                             </label>
                             <label>
-                                    password:
+                                    Contraseña:
                                 <Input type="password" value={this.state.userToModify.password} name="password" onChange={this.handleChangeInput} />
                             </label>
                             <Select

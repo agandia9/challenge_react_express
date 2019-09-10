@@ -1,5 +1,5 @@
 import React,{ Component } from 'react';
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import { Sidebar } from '../sidebar/sidebar'
 import { InfoUser } from '../infoUser/infoUser'
 import { Header } from '../header/header'
@@ -40,6 +40,10 @@ export class Main extends Component {
                   exact path={'/info'}
                   component={ () => <InfoUser userInfo={this.state.userInfo} />}
 								/>
+                 <Route 
+                  exact path={'*'}
+                  component={ () => <Redirect to="/info" />}
+								/>
                 {
                   this.state.isAdmin ? 
                     <div>
@@ -54,7 +58,6 @@ export class Main extends Component {
                   </div> 
                   : undefined
                 } 
-                 {/* <Route component={ () => <p> ⚠️ 404 Ruta no encontrada </p>} /> */}
             </div>
         </div>
 				

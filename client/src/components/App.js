@@ -3,15 +3,12 @@ import './App.css';
 import {Main} from './main/main';
 import storage from '../services/storage'
 import {Login} from './login/login'
-import { Redirect } from 'react-router-dom'
 
 class App extends Component {
   state = {isLogged: false, userInfo:{}}
 
   componentDidMount = ()=>{
-    !Object.keys(this.state.userInfo).length ? this.setState({userInfo:storage.getUser()}, () => {
-      // console.log(this.state)
-    }) : undefined
+    !Object.keys(this.state.userInfo).length ? this.setState({userInfo:storage.getUser()}) : undefined
     
     return storage.getToken() ? this.setState({isLogged:true}) : undefined
   }

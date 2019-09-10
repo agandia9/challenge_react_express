@@ -11,10 +11,10 @@ export class InfoUser extends PureComponent {
         return(
             <div className="welcome-info">
                 <h3> Bienvenido/a </h3>
-                <div className="info">
-                    <span><p>Email: </p> {this.props.userInfo.email} </span>
-                    <span><p>Nombre: </p> { this.props.userInfo.name } </span>
-                    <span><p>Apellido: </p> { this.props.userInfo.surname } </span>
+                <div className="info-user-main">
+                    <span><p> <strong> Email: </strong> { this.props.userInfo.email }</p> </span>
+                    <span><p> <strong> Nombre: </strong> { this.props.userInfo.name } </p> </span>
+                    <span><p> <strong> Apellido: </strong>  { this.props.userInfo.surname } </p></span>
                 </div>
             </div>
         )

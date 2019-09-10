@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import './listUsers.css'
 import service from '../../services/api'
 import storage from '../../services/storage'
-import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
