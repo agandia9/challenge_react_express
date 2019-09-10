@@ -35,6 +35,7 @@ const api = {
         return this._call('post', 'create', { name, surname, password, email, permissions }, token);
     },
     updateUsers(id, name, surname, password, email, permissions, token) {
+        
         return this._call('put', 'update/' + id, { name, surname, password, email, permissions }, token);
     },
     deleteUsers(id, token) {

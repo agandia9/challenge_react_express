@@ -3,6 +3,8 @@ import { Route } from 'react-router-dom'
 import { Sidebar } from '../sidebar/sidebar'
 import { InfoUser } from '../infoUser/infoUser'
 import { Header } from '../header/header'
+import { ListUsers } from '../listUsers/listUsers'
+import { EditUsers } from '../editUsers/editUsers'
 import './main.css';
 
 export class Main extends Component {
@@ -10,7 +12,9 @@ export class Main extends Component {
   state = { userInfo: {}, isAdmin: false }
 
   componentDidMount(){
-    this.setState({userInfo: this.props.userInfo, isAdmin: this.props.userInfo.permissions !== 'ADMIN_PERMISSION' ? true : false})
+    this.setState({userInfo: this.props.userInfo, isAdmin: this.props.userInfo.permissions === "ADMIN_PERMISSION" ? true : false}
+    // , () => console.log(this.state)
+    )
   }
 
 
@@ -37,21 +41,6 @@ export class Main extends Component {
                   exact path={'/'}
                   component={ () => <InfoUser userInfo={this.state.userInfo} />}
 								/>
-								{/* <Route 
-                  exact path={'/subject/:nsubject'}
-                  render={(props) => <Subject 
-                                        userInfo={this.props.userInfo} 
-                                        info={props}
-                                        _passToNav={this._passToNav}
-                                      />}
-								/>
-                <Route
-                  path={'/profile/:username'}
-                  render={(props) => <Profile 
-                    _handleLogout={this.props._handleLogout} 
-                    
-                  />}
-                />*/}
                 {
                   this.state.isAdmin ? 
                     <div>
@@ -61,14 +50,13 @@ export class Main extends Component {
                       />
                       <Route
                         path={'/update'}
-                        component={InfoUser}
+                        component={EditUsers}
                       />
                       <Route
                         path={'/list'}
-                        component={InfoUser}
+                        component={ListUsers}
                       />
-                  </div>
-                  
+                  </div> 
                   : undefined
                 } 
             </div>

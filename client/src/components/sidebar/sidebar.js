@@ -1,34 +1,25 @@
 import React, { Component } from 'react';
 import './sidebar.css';
-
+import { NavLink } from 'react-router-dom'
 
 export class Sidebar extends Component {
   render() {
     return (
       <div className="sidenav-main">
-        <p>Crear usuario</p>
-        <p>Actualizar usuario</p>
-        <p>Lista de usuarios</p>
-            {/* <SideNav trigger={<Button />} options={{closeOnClick: true}}>
-            <SideNavItem userView user={{
-            background: 'https://placeimg.com/640/480/tech',
-            image: 'static/media/react-materialize-logo.824c6ea3.svg',
-            name: 'John Doe',
-            }} />
-            <SideNavItem href="#!icon" icon="cloud">
-            First Link With Icon
-            </SideNavItem>
-            <SideNavItem href="#!second">
-            Second Link
-            </SideNavItem>
-            <SideNavItem divider />
-            <SideNavItem subheader>
-            Subheader
-            </SideNavItem>
-            <SideNavItem waves href="#!third">
-            Third Link With Waves
-            </SideNavItem>
-            </SideNav> */}
+        <h2>Acciones</h2>
+        <div className="sidenav-main-section">
+          <NavLink to={"/"}>Info usuario</NavLink>
+        </div>
+        {/* is admin????? */}
+        <div className="sidenav-main-section">
+          <NavLink to={"/create"}>Crear usuario</NavLink>
+        </div>
+        <div className="sidenav-main-section">
+          <NavLink to={"/update"}>Modificar usuario</NavLink>
+        </div>
+        <div className="sidenav-main-section">
+          <NavLink to={"/list"}>Lista de usuarios</NavLink>
+        </div>
       </div>
     );
   }

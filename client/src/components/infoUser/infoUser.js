@@ -1,11 +1,8 @@
-import React, {Component } from 'react'
+import React, { PureComponent } from 'react'
 import './infoUser.css'
-import api from '../../services/api'
-import storage from '../../services/storage'
 
-export class InfoUser extends Component {
-    state = {isLogged: false, userInfo:{}}
-    componentDidMount = ()=>{
+export class InfoUser extends PureComponent {
+    componentDidMount = () => {
         
         // console.log(this.props.userInfo)
     }

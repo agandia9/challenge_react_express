@@ -10,7 +10,8 @@ class App extends Component {
   state = {isLogged: false, userInfo:{}}
 
   componentDidMount = ()=>{
-    console.log(storage.getUser())
+    //verificar token!!!
+
     !Object.keys(this.state.userInfo).length ? this.setState({userInfo:storage.getUser()}, () => {
       // console.log(this.state)
     }) : undefined

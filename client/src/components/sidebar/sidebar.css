@@ -1,0 +1,16 @@
+.sidenav-main-section {
+    padding-top: 17px;
+    padding-bottom: 17px;
+    background-color: lightgrey;
+    margin-bottom: 1px;
+    border: 1px solid darkgray;
+}
+.sidenav-main-section > a {
+    font-size: 18px;
+    text-decoration: none;
+    
+}
+
+.sidenav-main-section > a:visited {
+    color: black;    
+}
