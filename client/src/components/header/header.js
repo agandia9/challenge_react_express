@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './header.css';
 import storage from '../../services/storage'
+import IconButton from '@material-ui/core/IconButton'
+import ExitToApp from '@material-ui/icons/ExitToApp';
+
 export class Header extends Component {
   _handleLogout = ()=>{
     storage.removeToken()
@@ -10,7 +13,11 @@ export class Header extends Component {
   render() {
     return (
     <div className="header-fixed">
-      <a className="active" href='/' onClick={this._handleLogout}>Logout</a>
+      <div >
+      <IconButton onClick={this._handleLogout} color="primary" size="medium"  aria-label="exit">
+        <ExitToApp fontSize="large" />
+      </IconButton>  
+      </div>
     </div>
     );
   }

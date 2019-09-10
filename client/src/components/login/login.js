@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import './login.css'
-
+import swal from 'sweetalert2'
 import service from '../../services/api'
-export class Login extends Component {
 
+export class Login extends Component {
     state = {
         email: '',
         password: ''
@@ -23,30 +23,31 @@ export class Login extends Component {
         const {email, password} = this.state
         return service.login(email, password)
             .then(res=>{
-                
                 if(res.ok){
                     this.props._handlerUserInfo(res.users)
                     this.props._handleIsLogged(res.token)
-                    // swal({
-                    //     title: 'Logged',
-                    //     text: `Welcome again ${email}`,
-                    //     type:'success',
-                    //     timer: 1500,
-                    //     showConfirmButton: false,
-                    // })
+                    swal.fire({
+                        type: 'success',
+                        title: `Bienvenido ${res.users.name}`,
+                        }
+                      )
                 }else{
-                    // swal('Error', 'email or Password not correct', 'error')
                 }
-            })
-            //not works.... for when lost connection with heroku  
-            .catch((err)=>{
-                // swal('Error', err,'')
+            }).catch(err => {
+                console.log(err)
+                
+                    swal.fire({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: err.error.message,}
+                      )
+                
             })
     }
     render(){
         return(
             <div className="form-login">
-                <p className="description">:)</p>
+                <p className="description">Bienvenido/a!</p>
                 <form onSubmit={this._handleLogin}>
                     <div className="field">
                             <input 

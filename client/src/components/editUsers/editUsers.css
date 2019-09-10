@@ -1,0 +1,16 @@
+.edit-users-button {
+    position: fixed;
+    padding: 5px;
+    right: 0;
+}
+.edit-users-form {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+}
+
+.edit-users-title {
+    text-align: left;
+    padding-left: 50px;
+}
+

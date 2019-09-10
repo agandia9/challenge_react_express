@@ -1,7 +1,9 @@
 .header-fixed {
-        width: 100%;
-    /* position: fixed; */
+    width: 100%;
     background-color: #56a8ff;
     height: 100%;
     top: 0;
+    display: flex;
+    justify-content: flex-end;
+    line-height: 6em;
 }

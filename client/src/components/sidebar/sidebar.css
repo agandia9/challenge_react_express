@@ -14,3 +14,7 @@
 .sidenav-main-section > a:visited {
     color: black;    
 }
+
+.active {
+    text-shadow: 2px 2px white;
+}

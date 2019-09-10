@@ -2,9 +2,10 @@ import React, { PureComponent } from 'react'
 import './infoUser.css'
 
 export class InfoUser extends PureComponent {
+    
     componentDidMount = () => {
         
-        // console.log(this.props.userInfo)
+        
     }
     render(){
         return(

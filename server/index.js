@@ -9,9 +9,12 @@ const mongo = {
     database: process.env.MONGO_DB
 }
 
+const init = require('./scripts/init')
+
 with(mongo) {
     mongoose.connect(`mongodb://${host}:${port}/${database}`, { useNewUrlParser: true })
     .then(() => {
+        init.createInitUsers()
         const app = express();
         app.use(cors())
         app.use('/api', router)

@@ -1,10 +1,10 @@
 const { Users } = require('../models');
 const mongoose = require('mongoose')
 module.exports = {
-    listUsers(page, pagination) {
+    listUsers() {
         return Users.find({})
-        .skip(page)
-        .limit(pagination)
+        // .skip(page)
+        // .limit(pagination)
     },
 
     getUser(id) {

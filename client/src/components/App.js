@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 import {Main} from './main/main';
-
 import storage from '../services/storage'
-
 import {Login} from './login/login'
+import { Redirect } from 'react-router-dom'
 
 class App extends Component {
   state = {isLogged: false, userInfo:{}}
 
   componentDidMount = ()=>{
-    //verificar token!!!
-
     !Object.keys(this.state.userInfo).length ? this.setState({userInfo:storage.getUser()}, () => {
       // console.log(this.state)
     }) : undefined
@@ -34,7 +31,10 @@ class App extends Component {
   _handleLogout = ()=>{
     this.setState({
       isLogged: false
+    },() => {
+     
     })
+    
   }
 
 

@@ -9,30 +9,33 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { Button } from '@material-ui/core';
-
+import IconButton from '@material-ui/core/IconButton'
+import DeleteIcon from '@material-ui/icons/Delete';
+import swal from 'sweetalert2'
 
 export class ListUsers extends Component {
     state = {userList: [], rows: []}
     // classes = this.useStyles();
-
-    componentDidMount = () => {
-        
+    handlerListRows = () => {
         service.listUsers(storage.getToken()).then(res => {
-            this.setState({userList: res.users}, () => {
-                this.setState({rows: res.users
-              
-                }, () => {
-                    //   console.log(this.state)
-                  });
+            this.setState({userList: res.users, rows: res.users}, () => {
             })
         })
+    }
+    componentDidMount = () => {
+        
+        this.handlerListRows()
         
     }
 
     handleDeleteUser = ( user ) => {
         service.deleteUsers(user._id, storage.getToken()).then(res => {
-            console.log(res)
+            this.handlerListRows()
+            swal.fire(
+                'Usuario borrado correctamente',
+                '',
+                'success'
+              )
         })
     }
     render(){
@@ -50,12 +53,20 @@ export class ListUsers extends Component {
                       </TableHead>
                       <TableBody>
                         {this.state.rows.map(row => (
-                          <TableRow key={row.name}>
+                          <TableRow key={row._id}>
                             <TableCell component="th" scope="row">{row.name}</TableCell>
                             <TableCell align="right">{row.email}</TableCell>
                             <TableCell align="right">{row.surname}</TableCell>
                             <TableCell align="right">{row.permissions}</TableCell>
-                            <TableCell align="right"><Button onClick={() => this.handleDeleteUser(row)}> ❌ </Button></TableCell>
+                                <TableCell align="right"> 
+                                {
+                                    storage.getUser()._id !== row._id ?
+                                    <IconButton onClick={() => this.handleDeleteUser(row)} aria-label="exit">
+                                        <DeleteIcon />
+                                    </IconButton>  
+                                    : null
+                                    }                 
+                                </TableCell>
                           </TableRow>
                         ))}
                       </TableBody>

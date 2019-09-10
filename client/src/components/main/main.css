@@ -12,6 +12,7 @@
 }
 
 .main-div{
+	padding: 20px;
 	grid-area: main;
 	overflow-y: scroll;
 }

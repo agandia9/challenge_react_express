@@ -32,33 +32,29 @@ export class Main extends Component {
             <div className="sidebar-div">
                 <Sidebar 
                   userInfo={this.state.userInfo} 
-                  newInfoUser={this.state.newInfoUser}
+                  isAdmin={this.state.isAdmin}
                 />
             </div> 
             <div className="main-div">
                 <Route 
-                  
-                  exact path={'/'}
+                  exact path={'/info'}
                   component={ () => <InfoUser userInfo={this.state.userInfo} />}
 								/>
                 {
                   this.state.isAdmin ? 
                     <div>
                       <Route
-                      path={'/create'}
-                      component={InfoUser}
-                      />
-                      <Route
-                        path={'/update'}
+                        exact path={'/update'}
                         component={EditUsers}
                       />
                       <Route
-                        path={'/list'}
+                        exact path={'/list'}
                         component={ListUsers}
                       />
                   </div> 
                   : undefined
                 } 
+                 {/* <Route component={ () => <p> ⚠️ 404 Ruta no encontrada </p>} /> */}
             </div>
         </div>
 				
